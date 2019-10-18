@@ -1,15 +1,5 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Data.dll
-// Description:  The data access libraries for the DotSpatial project.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 3/8/2010 11:54:49 AM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
 
 using System;
 using System.IO;
@@ -21,6 +11,8 @@ namespace DotSpatial.Data
     /// </summary>
     public static class StreamExt
     {
+        #region Methods
+
         /// <summary>
         /// Attempts to read count of bytes from stream.
         /// </summary>
@@ -35,7 +27,46 @@ namespace DotSpatial.Data
         }
 
         /// <summary>
-        /// Attempts to read the specified T.  If this system is
+        /// Reads a double precision value from the stream. If this system
+        /// is not little endian, it will reverse the individual memebrs.
+        /// </summary>
+        /// <param name="stream">The stream to read the values from.</param>
+        /// <returns>A double precision value</returns>
+        public static double ReadDouble(this Stream stream)
+        {
+            return ReadDouble(stream, 1)[0];
+        }
+
+        /// <summary>
+        /// Reads the specified number of double precision values. If this system
+        /// does not match the specified endian, the bytes will be reversed.
+        /// </summary>
+        /// <param name="stream">The stream to read the values from.</param>
+        /// <param name="count">The integer count of doubles to read.</param>
+        /// <param name="endian">The endian to use.</param>
+        /// <returns>An array with the double values that were read.</returns>
+        public static double[] ReadDouble(this Stream stream, int count, Endian endian = Endian.LittleEndian)
+        {
+            var val = new byte[count * 8];
+            stream.Read(val, 0, count * 8);
+            if ((endian == Endian.LittleEndian) != BitConverter.IsLittleEndian)
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var temp = new byte[8];
+                    Array.Copy(val, i * 8, temp, 0, 8);
+                    Array.Reverse(temp);
+                    Array.Copy(temp, 0, val, i * 8, 8);
+                }
+            }
+
+            var result = new double[count];
+            Buffer.BlockCopy(val, 0, result, 0, count * 8);
+            return result;
+        }
+
+        /// <summary>
+        /// Attempts to read the specified T. If this system is
         /// doesn't match the specified endian, then this will reverse the array of bytes,
         /// so that it corresponds with the big-endian format.
         /// </summary>
@@ -50,11 +81,12 @@ namespace DotSpatial.Data
             {
                 Array.Reverse(val);
             }
+
             return BitConverter.ToInt32(val, 0);
         }
 
         /// <summary>
-        /// Reads the specified number of integers.  If a value other than the
+        /// Reads the specified number of integers. If a value other than the
         /// systems endian format is specified the values will be reversed.
         /// </summary>
         /// <param name="stream">The stream to read from</param>
@@ -76,53 +108,16 @@ namespace DotSpatial.Data
                     Array.Copy(temp, 0, val, i * 4, 4);
                 }
             }
+
             Buffer.BlockCopy(val, 0, result, 0, count * 4);
             return result;
         }
 
         /// <summary>
-        /// Reads a double precision value from the stream.  If this system
-        /// is not little endian, it will reverse the individual memebrs.
+        /// Writes the specified integer value to the stream as big endian.
         /// </summary>
-        /// <param name="stream">The stream to read the values from.</param>
-        /// <returns>A double precision value</returns>
-        public static double ReadDouble(this Stream stream)
-        {
-            return ReadDouble(stream, 1)[0];
-        }
-
-        /// <summary>
-        /// Reads the specified number of double precision values.  If this system
-        /// does not match the specified endian, the bytes will be reversed.
-        /// </summary>
-        /// <param name="stream">The stream to read the values from.</param>
-        /// <param name="count">The integer count of doubles to read.</param>
-        /// <param name="endian">The endian to use.</param>
-        /// <returns></returns>
-        public static double[] ReadDouble(this Stream stream, int count, Endian endian = Endian.LittleEndian)
-        {
-            var val = new byte[count * 8];
-            stream.Read(val, 0, count * 8);
-            if ((endian == Endian.LittleEndian) != BitConverter.IsLittleEndian)
-            {
-                for (var i = 0; i < count; i++)
-                {
-                    var temp = new byte[8];
-                    Array.Copy(val, i * 8, temp, 0, 8);
-                    Array.Reverse(temp);
-                    Array.Copy(temp, 0, val, i * 8, 8);
-                }
-            }
-            var result = new double[count];
-            Buffer.BlockCopy(val, 0, result, 0, count * 8);
-            return result;
-        }
-
-        /// <summary>
-        /// Writes the integer as big endian
-        /// </summary>
-        /// <param name="stream">The IO stream </param>
-        /// <param name="value"></param>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="value">The integer value to write in big endian form.</param>
         public static void WriteBe(this Stream stream, int value)
         {
             var val = BitConverter.GetBytes(value);
@@ -131,10 +126,10 @@ namespace DotSpatial.Data
         }
 
         /// <summary>
-        /// Writes the endian as little endian
+        /// Writes the specified integer value to the stream as little endian.
         /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="value"></param>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="value">The integer value to write in little endian form.</param>
         public static void WriteLe(this Stream stream, int value)
         {
             var val = BitConverter.GetBytes(value);
@@ -143,13 +138,13 @@ namespace DotSpatial.Data
         }
 
         /// <summary>
-        /// Checks that the endian order is ok for integers and then writes
-        /// the entire array to the stream.
+        /// Checks that the endian order is ok for integers and then writes the number of array items
+        /// that are defined by startIndex and count to the stream.
         /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="values"></param>
-        /// <param name="startIndex"></param>
-        /// <param name="count"></param>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="values">The integer values to write in little endian form.</param>
+        /// <param name="startIndex">The integer start index in the integer array to begin writing.</param>
+        /// <param name="count">The integer count of integer to write.</param>
         public static void WriteLe(this Stream stream, int[] values, int startIndex, int count)
         {
             var bytes = new byte[count * 4];
@@ -165,14 +160,15 @@ namespace DotSpatial.Data
                     Array.Copy(temp, i * 4, bytes, (count - i - 1) * 4, 4);
                 }
             }
+
             stream.Write(bytes, 0, bytes.Length);
         }
 
         /// <summary>
-        /// Writes the specified double value to the stream as little endian
+        /// Writes the specified double value to the stream as little endian.
         /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="value"></param>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="value">The double value to write in little endian form.</param>
         public static void WriteLe(this Stream stream, double value)
         {
             var val = BitConverter.GetBytes(value);
@@ -181,12 +177,22 @@ namespace DotSpatial.Data
         }
 
         /// <summary>
-        /// Checks that the endian order is ok for doubles and then writes
-        /// the entire array to the stream.
+        /// Checks that the endian order is ok for doubles and then writes the entire array to the stream.
         /// </summary>
-        /// <param name="stream">The stream to write to</param>
-        /// <param name="values">The double values to write in little endian form</param>
-        /// <param name="startIndex">The integer start index in the double array to begin writing</param>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="values">The double values to write in little endian form.</param>
+        public static void WriteLe(this Stream stream, double[] values)
+        {
+            WriteLe(stream, values, 0, values.Length);
+        }
+
+        /// <summary>
+        /// Checks that the endian order is ok for doubles and then writes the number of array items
+        /// that are defined by startIndex and count to the stream.
+        /// </summary>
+        /// <param name="stream">The stream to write to.</param>
+        /// <param name="values">The double values to write in little endian form.</param>
+        /// <param name="startIndex">The integer start index in the double array to begin writing.</param>
         /// <param name="count">The integer count of doubles to write.</param>
         public static void WriteLe(this Stream stream, double[] values, int startIndex, int count)
         {
@@ -203,7 +209,10 @@ namespace DotSpatial.Data
                     Array.Copy(temp, i * 8, bytes, (count - i - 1) * 8, 8);
                 }
             }
+
             stream.Write(bytes, 0, bytes.Length);
         }
+
+        #endregion
     }
 }

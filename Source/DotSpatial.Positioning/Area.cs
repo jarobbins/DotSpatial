@@ -1739,7 +1739,7 @@ namespace DotSpatial.Positioning
         /// <summary>
         /// Returns a random distance between 0 and 1, 000 square meters.
         /// </summary>
-        /// <param name="generator">A <strong>Random</strong> object used to ogenerate random values.</param>
+        /// <param name="generator">A <strong>Random</strong> object used to generate random values.</param>
         /// <returns>A <strong>Distance</strong> containing a random value, converted to local units.</returns>
         public static Area Random(Random generator)
         {
@@ -2041,7 +2041,7 @@ namespace DotSpatial.Positioning
                 format = "G";
 
             string subFormat;
-            //Dim IsDecimalHandled As Boolean
+            // Dim IsDecimalHandled As Boolean
             try
             {
                 // Use the default if "g" is passed
@@ -2205,7 +2205,7 @@ namespace DotSpatial.Positioning
                 throw new ArgumentException(Resources.Area_InvalidFormat, "format", ex);
 #endif
             }
-            //catch
+            // catch
             //{
             //    throw new ArgumentException(Properties.Resources.Area_InvalidFormat), "format");
             //}

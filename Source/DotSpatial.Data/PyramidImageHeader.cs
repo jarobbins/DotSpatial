@@ -1,33 +1,43 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Data.dll
-// Description:  The data access libraries for the DotSpatial project.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 2/11/2010 10:13:10 AM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
 
 using System;
 using System.Xml.Serialization;
 
 namespace DotSpatial.Data
 {
+    /// <summary>
+    /// PyramidImageHeader
+    /// </summary>
     public class PyramidImageHeader
     {
-        #region Private Variables
+        #region Properties
 
-        private double[] _affine;
-        private int _numColums;
-        private int _numRows;
-        private long _offset;
+        /// <summary>
+        /// Gets or sets the affine coefficients for this image in ABCDEF order.
+        /// X' = A + BX + CY
+        /// Y' = D + EX + FY
+        /// </summary>
+        [XmlAttribute("Affine")]
+        public double[] Affine { get; set; }
 
-        #endregion
+        /// <summary>
+        /// Gets or sets the number of columns.
+        /// </summary>
+        [XmlAttribute("NumColumns")]
+        public int NumColumns { get; set; }
 
-        #region Constructors
+        /// <summary>
+        /// Gets or sets the number of rows.
+        /// </summary>
+        [XmlAttribute("NumRows")]
+        public int NumRows { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the offsets.
+        /// </summary>
+        [XmlAttribute("Offset")]
+        public long Offset { get; set; }
 
         #endregion
 
@@ -41,78 +51,32 @@ namespace DotSpatial.Data
         /// <param name="scale">The integer scale starting at 0 for the original image, and increasing by one for each down-sampling</param>
         public void SetAffine(double[] affine, int scale)
         {
-            _affine = new double[6];
-            Array.Copy(affine, _affine, 6);
-            _affine[1] = _affine[1] * Math.Pow(2, scale);
-            _affine[2] = _affine[2] * Math.Pow(2, scale);
-            _affine[4] = _affine[4] * Math.Pow(2, scale);
-            _affine[5] = _affine[5] * Math.Pow(2, scale);
+            Affine = new double[6];
+            Array.Copy(affine, Affine, 6);
+            Affine[1] = Affine[1] * Math.Pow(2, scale);
+            Affine[2] = Affine[2] * Math.Pow(2, scale);
+            Affine[4] = Affine[4] * Math.Pow(2, scale);
+            Affine[5] = Affine[5] * Math.Pow(2, scale);
         }
 
         /// <summary>
-        /// Sets the number of rows based on the integer scale
+        /// Sets the number of columns based on the integer scale.
         /// </summary>
-        /// <param name="originalNumRows"></param>
-        /// <param name="scale">integer starts at 0 for the original image</param>
-        public void SetNumRows(int originalNumRows, int scale)
-        {
-            _numRows = (int)(originalNumRows / Math.Pow(2, scale));
-        }
-
-        /// <summary>
-        /// Sets the number of columns based on the integer scale
-        /// </summary>
-        /// <param name="originalNumColumns"></param>
+        /// <param name="originalNumColumns">The number of columns.</param>
         /// <param name="scale">integer starts at 0 for the original image</param>
         public void SetNumColumns(int originalNumColumns, int scale)
         {
-            _numColums = (int)(originalNumColumns / Math.Pow(2, scale));
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Offsets
-        /// </summary>
-        [XmlAttribute("Offset")]
-        public long Offset
-        {
-            get { return _offset; }
-            set { _offset = value; }
+            NumColumns = (int)(originalNumColumns / Math.Pow(2, scale));
         }
 
         /// <summary>
-        /// Integer number of rows
+        /// Sets the number of rows based on the integer scale.
         /// </summary>
-        [XmlAttribute("NumRows")]
-        public int NumRows
+        /// <param name="originalNumRows">The number of rows.</param>
+        /// <param name="scale">integer starts at 0 for the original image</param>
+        public void SetNumRows(int originalNumRows, int scale)
         {
-            get { return _numRows; }
-            set { _numRows = value; }
-        }
-
-        /// <summary>
-        /// Integer number of columns
-        /// </summary>
-        [XmlAttribute("NumColumns")]
-        public int NumColumns
-        {
-            get { return _numColums; }
-            set { _numColums = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the affine coefficients for this image in ABCDEF order
-        /// X' = A + BX + CY
-        /// Y' = D + EX + FY
-        /// </summary>
-        [XmlAttribute("Affine")]
-        public double[] Affine
-        {
-            get { return _affine; }
-            set { _affine = value; }
+            NumRows = (int)(originalNumRows / Math.Pow(2, scale));
         }
 
         #endregion

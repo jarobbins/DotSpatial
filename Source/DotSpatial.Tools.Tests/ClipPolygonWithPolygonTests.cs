@@ -1,16 +1,19 @@
-﻿using System.IO;
-using System.Linq;
+﻿// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
+
 using DotSpatial.Data;
 using DotSpatial.Tests.Common;
-using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
 namespace DotSpatial.Tools.Tests
 {
+    /// <summary>
+    /// Tests for the clip polygon with polygon tool.
+    /// </summary>
     [TestFixture]
     internal class ClipPolygonWithPolygonTests
     {
-        private readonly string _shapefiles = Path.Combine(@"Data", @"Shapefiles");
+        #region Methods
 
         /// <summary>
         /// After clipping Europe with Belgium the test verifies that the clipping outputs the correct number of features,
@@ -33,7 +36,7 @@ namespace DotSpatial.Tools.Tests
             IFeatureSet belgiumShape = Shapefile.OpenFile(@"Data\ClipPolygonWithPolygonTests\Belgium.shp");
 
             // set output file as IFeatureSet shapefile
-            IFeatureSet outputShape = new Shapefile()
+            IFeatureSet outputShape = new FeatureSet()
             {
                 Filename = FileTools.GetTempFileName(".shp")
             };
@@ -50,7 +53,7 @@ namespace DotSpatial.Tools.Tests
                 Assert.That(outputFile.DataTable.Columns[0].Caption.Equals("ID"));
                 Assert.That(outputFile.DataTable.Columns[1].Caption.Equals("Name"));
 
-                string[,] dataValues = { {"BE", "Belgium"}, {"DE", "Germany"}, {"LU", "Luxembourg"} };
+                string[,] dataValues = { { "BE", "Belgium" }, { "DE", "Germany" }, { "LU", "Luxembourg" } };
 
                 var mpCount = 0;
                 foreach (var feature in outputFile.Features)
@@ -58,6 +61,7 @@ namespace DotSpatial.Tools.Tests
                     Assert.That(feature.DataRow.ItemArray.Length == 2 && feature.DataRow.ItemArray[0].Equals(dataValues[mpCount, 0]) && feature.DataRow.ItemArray[1].Equals(dataValues[mpCount, 1]));
                     mpCount++;
                 }
+
                 Assert.That(mpCount == 3);
             }
             finally
@@ -65,5 +69,7 @@ namespace DotSpatial.Tools.Tests
                 FileTools.DeleteShapeFile(outputShape.Filename);
             }
         }
+
+        #endregion
     }
 }

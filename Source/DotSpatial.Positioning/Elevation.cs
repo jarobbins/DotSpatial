@@ -68,7 +68,7 @@ namespace DotSpatial.Positioning
     ///   </code>
     ///   </example>
     /// <remarks>This class is used to indicate a vertical angle where 90° represents a point
-    /// directly overhead, 0° represents the horizon (striaght ahead), and -90° represents a
+    /// directly overhead, 0° represents the horizon (straight ahead), and -90° represents a
     /// point straight down. This class is typically combined with an <strong>Elevation</strong>
     /// object (which measures a horizontal angle) to form a three-dimensional direction to an
     /// object in space, such as a GPS satellite.</remarks>
@@ -763,7 +763,7 @@ Math.Round(
 #endif
             // Get the amount in seconds
             double newSeconds = Seconds;
-            //double HalfInterval = interval * 0.5;
+            // double HalfInterval = interval * 0.5;
             // Loop through all intervals to find the right rounding
             for (double value = 0; value < 60; value += interval)
             {
@@ -1021,7 +1021,7 @@ Math.Round(
         /// places, the maximum precision allowed by this type.</remarks>
         public static double ToDecimalDegrees(int hours, int minutes, double seconds)
         {
-            //return hours < 0
+            // return hours < 0
             //    ? -Math.Round(-hours + minutes / 60.0 + seconds / 3600.0, MaximumPrecisionDigits)
             //    : Math.Round(hours + minutes / 60.0 + seconds / 3600.0, MaximumPrecisionDigits);
             return hours < 0
@@ -1043,7 +1043,7 @@ Math.Round(
         /// places, the maximum precision allowed by this type.</remarks>
         public static double ToDecimalDegrees(int hours, double decimalMinutes)
         {
-            //return hours < 0
+            // return hours < 0
             //    ? -Math.Round(-hours + decimalMinutes / 60.0, MaximumPrecisionDigits)
             //    : Math.Round(hours + decimalMinutes / 60.0, MaximumPrecisionDigits);
             return hours < 0
@@ -1076,7 +1076,7 @@ Math.Round(
         /// Returns a random Elevation between 0° and 360° using the specified random number
         /// seed.
         /// </summary>
-        /// <param name="generator">A <strong>Random</strong> object used to ogenerate random values.</param>
+        /// <param name="generator">A <strong>Random</strong> object used to generate random values.</param>
         /// <returns>An <strong>Elevation</strong> containing a random value.</returns>
         public static Elevation Random(Random generator)
         {
@@ -1471,7 +1471,7 @@ Math.Round(
         /// // Incorrect use of Increment
         /// Elevation Elevation1 = new Elevation(89);
         /// Elevation1.Increment();
-        /// //notice Elevation1 will still be 89°!
+        /// // notice Elevation1 will still be 89°!
         ///   </code>
         ///   </example>
         /// <remarks><para>This method increases the <strong>DecimalDegrees</strong> property by 1.0,

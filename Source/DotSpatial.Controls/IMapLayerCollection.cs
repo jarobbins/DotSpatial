@@ -1,15 +1,5 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Controls.dll
-// Description:  The Windows Forms user interface controls like the map, legend, toolbox, ribbon and others.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 8/19/2008 10:26:38 AM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
 
 using System;
 using DotSpatial.Data;
@@ -17,6 +7,9 @@ using DotSpatial.Symbology;
 
 namespace DotSpatial.Controls
 {
+    /// <summary>
+    /// Collection of <see cref="IMapLayer"/>.
+    /// </summary>
     public interface IMapLayerCollection : ILayerEventList<IMapLayer>
     {
         #region Events
@@ -26,6 +19,31 @@ namespace DotSpatial.Controls
         /// should be updated.
         /// </summary>
         event EventHandler<ClipArgs> BufferChanged;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the map frame that this belongs to. These are designed to only work with one map frame at a time.
+        /// </summary>
+        IMapFrame MapFrame { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ParentGroup for this layer collection, even if that parent group
+        /// is not actually a map frame.
+        /// </summary>
+        IMapGroup ParentGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the progress handler to report progress for time consuming actions.
+        /// </summary>
+        IProgressHandler ProgressHandler { get; set; }
+
+        /// <summary>
+        /// Gets or sets the currently active layer.
+        /// </summary>
+        IMapLayer SelectedLayer { get; set; }
 
         #endregion
 
@@ -39,7 +57,7 @@ namespace DotSpatial.Controls
         IMapLayer Add(string fileName);
 
         /// <summary>
-        /// Adds the dataset specified to the file.  Depending on whether this is a featureSet,
+        /// Adds the dataset specified to the file. Depending on whether this is a featureSet,
         /// Raster, or ImageData, this will return the appropriate layer for the map.
         /// </summary>
         /// <param name="dataSet">A dataset</param>
@@ -77,39 +95,6 @@ namespace DotSpatial.Controls
         /// <param name="layer">Layer that is moved.</param>
         /// <param name="newPosition">Position the layer is moved to.</param>
         void Move(IMapLayer layer, int newPosition);
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the map frame that this belongs to.  These are designed to only work with one map frame at a time.
-        /// </summary>
-        IMapFrame MapFrame { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ParentGroup for this layer collection, even if that parent group
-        /// is not actually a map frame.
-        /// </summary>
-        IMapGroup ParentGroup { get; set; }
-
-        /// <summary>
-        /// Gets or sets the progress handler to report progress for time consuming actions.
-        /// </summary>
-        IProgressHandler ProgressHandler { get; set; }
-
-        /// <summary>
-        /// Gets or sets the currently active layer.
-        /// </summary>
-        IMapLayer SelectedLayer { get; set; }
-
-        /// <summary>
-        /// Given a base name, this increments a number for appending
-        /// if the name already exists in the collection.
-        /// </summary>
-        /// <param name="baseName">The string base name to start with</param>
-        /// <returns>The base name modified by a number making it unique in the collection</returns>
-        string UnusedName(string baseName);
 
         #endregion
     }

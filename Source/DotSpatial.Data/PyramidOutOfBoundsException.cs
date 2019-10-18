@@ -1,24 +1,19 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Data.dll
-// Description:  The data access libraries for the DotSpatial project.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 2/11/2010 11:51:17 AM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
+
+using System;
 
 namespace DotSpatial.Data
 {
-    public class PyramidOutOfBoundsException : PyramidException
+    /// <summary>
+    /// The exception that is thrown when range specified is outside the bounds for the specified image scale.
+    /// </summary>
+    public class PyramidOutOfBoundsException : Exception
     {
         #region Constructors
 
         /// <summary>
-        /// Creates a new instance of PyramidOutOfBoundsException
+        /// Initializes a new instance of the <see cref="PyramidOutOfBoundsException"/> class.
         /// </summary>
         public PyramidOutOfBoundsException()
             : base(DataStrings.PyramidOutOfBoundsException)

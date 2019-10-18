@@ -299,7 +299,7 @@ namespace DotSpatial.Positioning
                      */
 
                     Device device = null;
-                    //Stream stream = null;
+                    // Stream stream = null;
                     Exception connectionException = null;
 
                     #region Pass 1: Look for a device with an open connection
@@ -567,7 +567,7 @@ namespace DotSpatial.Positioning
             get
             {
                 /* We can get the state of the radio if it's a Microsoft stack.
-                 * Thankfully, Microsoft BT stacks are part of Wista, Wnidows 7, and
+                 * Thankfully, Microsoft BT stacks are part of Wista, Windows 7, and
                  * Windows Mobile 5+, making it very common.  However, it's still in 2nd
                  * place behind Broadcom (Widcomm).  Though, I doubt this will last long.
                  * So, screw Broadcom.

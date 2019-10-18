@@ -1,24 +1,19 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Data.dll
-// Description:  The data access libraries for the DotSpatial project.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 2/11/2010 11:34:18 AM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
+
+using System;
 
 namespace DotSpatial.Data
 {
-    public class PyramidUndefinedHeaderException : PyramidException
+    /// <summary>
+    /// The exception that is thrown when attempting to write data before the headers are defined.
+    /// </summary>
+    public class PyramidUndefinedHeaderException : Exception
     {
         #region Constructors
 
         /// <summary>
-        /// Creates a new instance of PyramidUndefinedHeader
+        /// Initializes a new instance of the <see cref="PyramidUndefinedHeaderException"/> class.
         /// </summary>
         public PyramidUndefinedHeaderException()
             : base(DataStrings.PyramidHeaderException)

@@ -1,15 +1,5 @@
-// ********************************************************************************************************
-// Product Name: DotSpatial.Symbology.dll
-// Description:  Contains the business logic for symbology layers and symbol categories.
-// ********************************************************************************************************
-//
-// The Original Code is from MapWindow.dll version 6.0
-//
-// The Initial Developer of this Original Code is Ted Dunsford. Created 5/18/2009 2:23:17 PM
-//
-// Contributor(s): (Open source contributors should list themselves and their modifications here).
-//
-// ********************************************************************************************************
+// Copyright (c) DotSpatial Team. All rights reserved.
+// Licensed under the MIT license. See License.txt file in the project root for full license information.
 
 using System;
 using GeoAPI.Geometries;
@@ -25,18 +15,30 @@ namespace DotSpatial.Symbology
         #region Events
 
         /// <summary>
-        /// OCcurs after all of the layers have been updated with new selection content.
+        /// Occurs after all of the layers have been updated with new selection content.
         /// </summary>
         event EventHandler SelectionChanged;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this item is actively supporting selection.
+        /// </summary>
+        bool SelectionEnabled { get; set; }
 
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// Removes any members from existing in the selected state
+        /// Removes any members from existing in the selected state.
         /// </summary>
-        bool ClearSelection(out Envelope affectedArea);
+        /// <param name="affectedArea">The affected area.</param>
+        /// <param name="force">Indicates whether the selection should be cleared although SelectionEnabled is false.</param>
+        /// <returns>Boolean, true if members were removed from the selection</returns>
+        bool ClearSelection(out Envelope affectedArea, bool force);
 
         /// <summary>
         /// Inverts the selected state of any members in the specified region.
@@ -56,8 +58,9 @@ namespace DotSpatial.Symbology
         /// <param name="strict">The geographic region when working with absolutes, without a tolerance</param>
         /// <param name="mode">The selection mode</param>
         /// <param name="affectedArea">The envelope affected area</param>
+        /// <param name="clear">Indicates whether prior selected features should be cleared.</param>
         /// <returns>Boolean, true if any members were added to the selection</returns>
-        bool Select(Envelope tolerant, Envelope strict, SelectionMode mode, out Envelope affectedArea);
+        bool Select(Envelope tolerant, Envelope strict, SelectionMode mode, out Envelope affectedArea, ClearStates clear);
 
         /// <summary>
         /// Removes any members found in the specified region from the selection
@@ -68,15 +71,6 @@ namespace DotSpatial.Symbology
         /// <param name="affectedArea">The geographic region containing all the shapes that were altered</param>
         /// <returns>Boolean, true if any members were removed from the selection</returns>
         bool UnSelect(Envelope tolerant, Envelope strict, SelectionMode mode, out Envelope affectedArea);
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the Boolean indicating whether this item is actively supporting selection
-        /// </summary>
-        bool SelectionEnabled { get; set; }
 
         #endregion
     }

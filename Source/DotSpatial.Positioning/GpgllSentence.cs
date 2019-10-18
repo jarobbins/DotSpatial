@@ -96,14 +96,14 @@ namespace DotSpatial.Positioning
             builder.Append(utcTime.Milliseconds.ToString("00#", NmeaCultureInfo));
             builder.Append(",");
 
-            //Append the fix status
+            // Append the fix status
             switch (fixStatus)
             {
                 case FixStatus.Fix:
                     builder.Append("A");
                     break;
                 default:
-                    builder.Append("V");  // V = INvalid
+                    builder.Append("V");  // V = Invalid
                     break;
             }
 

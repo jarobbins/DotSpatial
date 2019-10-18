@@ -2,8 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+Be aware that code written for 1.9 will not work out of the box because DotSpatial.Topology was replaced by DotSpatial.GeoAPI and DotSpatial.NetTopologySuite (#786). Have a look at the [Wiki](https://github.com/DotSpatial/DotSpatial/wiki/Switching-from-DotSpatial-1.9-to-2.0) for more information.
+
 ### Added
-- Switched to NTS/GeoAPI instead of DotSpatial.Topology (#633, #404) 
+- Aliases to Satellite of DotSpatial.Positioning
+- Switched to NTS/GeoAPI instead of DotSpatial.Topology (#633, #404, #786) 
 - Tag property in ActionItem (#338)
 - Added property AppManager.BaseDirectory which allows to change base directory for plugins. (#758)
 - Support for formatted ESRI projection files (#793)
@@ -12,8 +16,22 @@ All notable changes to this project will be documented in this file.
 - CopySubset overloads with withAttributes parameters
 - Jenks Natural Breaks support in categories binning.
 - Test that checks correct creation of GpggkSentence objects from string
+- Constructing Shapefiles in memory as single zip archives (#885)
+- StyleCop.Analyzers to enforce a set of style and consistency rules
+- Chm file with DotSpatial API documentation
+- Example for Buffer.AddBuffer method (#1002)
+- Legend.UseLegendForSelection property to be able to decide whether the legend should be used for selection or not. (#1008)
+- Possibility to drag layers out of their group into the parent group (in legend) (#1008)
+- Clear parameter to Select function to speed up drawing (#1024)
+- LayoutControl.InitialOpenFileDirectory property that allows to set the folder that is shown in the OpenFileDialog that is used to open an existing layout
+- FeatureLayer.Snappable to indicate whether the layer can be used for snapping
+- The possibility to draw linestrings which are inside a geometry collection (#1061)
+- The possibility to use static methods to deserialize objects that were serialized to a dspx file and can't be deserialized correctly via their class constructor (FeatureSet, MapSelfLoadGroup, MapSelfLoadLayers from GdalExtension, SpatiaLiteFeatureSet) (#1061)
+- Default mouse cursor button in layout insert toolbar
 
 ### Changed
+- Switched to VS2017 and C#7
+- Switched to .Net Framework 4.5.2 (#1083)
 - GdalExtension: Updated to GDAL 1.1.11
 - Demo and Apps projects should have build files (#120)
 - ExtensionManager & HideReleaseFromEndUser (#798)
@@ -28,12 +46,26 @@ All notable changes to this project will be documented in this file.
 - ShapeFile Numeric columns now loaded into double instead of string for up to 15 decimal digits (#893)
 - DS Feature refactorings (#906)
 - LegendText ReadOnly (#750)
+- Made Shapefile class abstract, because we already have FeatureSet for creating unspecified Shapefiles (#890)
+- Moved MapFrame extension methods to Group (#1008)
+- Drawing functions so selected features are drawn on top (#897)
+- ShapeEditors AddFeature and MoveVertex functions, so they snap only to the layers that allow snapping
+- ShapeEditors SnapSettingsDialog to allow the users to select the layers the editor functions may snap to
+- If a dxf file contains points, lines and polygons at the same time, the dxf file gets added to the map as a group that contains one layer for points, one for lines and one for polygons (#1061)
+- If a dxf file contains only a single feature type the dxf file gets added to the map as a single layer with the feature type it contains (#1061)
+- dxf files get loaded with their styles (#1061)
+- Show buttons from layout toolbars as checked while their function is active
+- replaced ContextMenu by ContextMenuStrip inside Legend, so we don't have to draw the images shown in the ContextMenu ourselves (#1069)
+- changed the background color of the LayerDialog and TabControlDialog tabs to Control so they have the same background color as the user controls they contain (#1069)
 
 ### Removed
 - Removed DotSpatial.Topology assembly (#633)
 - Removed obsolete methods\properties (#797)
+- Removed DotSpatial.Mono assembly. Mono helper now is in DotSpatial.Data assembly.
+- Removed unnecessary methods in LayoutControl
 
 ### Fixed
+- Satellite's missing properties (#958)
 - Parameters for the Austrian Bundesmeldenetz in DotSpatial.Projections.ProjectedCategories.NationalGrids are incorrect (#855)
 - Raster extent shifts from correct extent (#725)
 - Inconsistent use of affine coefficients (#822)
@@ -93,3 +125,30 @@ All notable changes to this project will be documented in this file.
 - DS uses InRamImage although GDAL provider was selected (#931)
 - Disable editing in identify window (#930)
 - ArcMap does show M and Z as NaN (#935)
+- Recognize NullShapes not only for polygon / line shapes when in IndexMode, but also in !IndexMode and for points and multipoints (#890)
+- Legends are in an opposite order in the map legend and in the Print Preview. (#970)
+- FeatureLayer.ClearSelection / SelectAll only work when FeatureLayer is selected in Legend (#659)
+- Using the Identifier tool isn't intuitive (#418)
+- Selection Options (#283)
+- Legend drag line so it doesn't look as if you can move a layer in between categories (#1008)
+- Legend selection to be able to select features of a category (#1008)
+- Some errors in SetSelectable plugin (#1008)
+- Crash when attempting to use a serial GPS device on Mono
+- Clear the selection inside FeatureLayer.RemoveSelectedFeatures so the removed features are no longer contained when IFeatureSet.FeatureRemoved is raised
+- In InRamImageData.Open don't draw the image unscaled because this can cause the image not to be drawn
+- FeatureTypeFromGeometryType Method updated to work with GeometryCollection (#1044)
+- The SpatiaLite plugin to be able to load SpatiaLite databases of version 4 and higher (#1061)
+- WebMap-Plugin fails fetching tiles for specific WMS (#1074)
+- Plugins/WFSClient: Feature fetching fails on systems w NumberFormatInfo.NumberDecimalSeparator != '.' (#1081)
+- showMargin can be checked as soon as layoutControl is not null (#1091) 
+- don't assign the 'EndRow' property to itself in BinaryRaster.OpenWindow (#1089)
+- assign "D_ITRF_1997" to ITRF1997.GeographicInfo.Datum.Name instead of ITRF1997.GeographicInfo.Name because this is the name of the datum and not the GeographicInfo (#1090)
+- Update Brutile version in Webmap? (#800)
+- SetSelectable Plugin Not Included in Release Build (#1106)
+- Error on OpenFile with special SPHEROID string (#1142)
+- Shape File Saves with Wrong DataTypes (#1005)
+- Calculation of translation param in InRamImageData.GetBitmap is defective (#1203)
+- MapImageLayer not drawn correctly on print (#1137)
+- MapRasterLayer not drawn correctly on print
+- Create Categories for symbology is inconsistent with large datasets (#1242)
+- Geographic projections now have a Name property

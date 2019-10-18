@@ -104,7 +104,7 @@ namespace DotSpatial.Positioning
 
         /* FxCop says this is unused
          *
-        //internal BluetoothEndPoint(byte[] data)
+        // internal BluetoothEndPoint(byte[] data)
         //{
         //    /* Socket endpoints are different on the desktop vs. mobile devices.
         //     * As a result, we'll serialize the same Address/Port/Guid differently.
@@ -214,7 +214,7 @@ namespace DotSpatial.Positioning
 #if !PocketPC
 
         /// <summary>
-        /// Returns a GUID indentifying the service.
+        /// Returns a GUID identifying the service.
         /// </summary>
         [Category("Data")]
         [Description("Returns a GUID indentifying the service.")]

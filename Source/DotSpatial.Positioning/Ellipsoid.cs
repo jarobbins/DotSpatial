@@ -37,7 +37,7 @@ namespace DotSpatial.Positioning
     /// <remarks><para>Mathematics involving points on Earth's surface are difficult to perform with
     /// precision because the Earth's surface is rugged. In order to maximize precision,
     /// scientists developed "ellipsoids," smooth ellipsoidal shapes (known as "oblate
-    /// spheriods" or flattened spheres) which attempt to approximate Earth's exact shape.
+    /// spheroids" or flattened spheres) which attempt to approximate Earth's exact shape.
     /// Like datums, ellipsoids have been subject to frequent revisions thanks to advances
     /// in technology, yet countries cannot quickly abandon outdated ellipsoids because so
     /// much infrastructure is built upon them. As a result, multiple ellipsoids are
@@ -173,7 +173,7 @@ namespace DotSpatial.Positioning
         /// Represents the Everest (1967 Definition) ellipsoid of 1830.
         /// </summary>
         public static readonly Ellipsoid Everest1967 = new Ellipsoid(7016, 6377298.556, 300.8017, 0, "Everest 1830 (1967 Definition)");
-        //No 7017 in EPSG
+        // No 7017 in EPSG
         /// <summary>
         /// Represents the Everest (Modified 1948) ellipsoid of 1880.
         /// </summary>
@@ -198,7 +198,7 @@ namespace DotSpatial.Positioning
         /// Represents the International ellipsoid of 1924.
         /// </summary>
         public static readonly Ellipsoid International1924 = new Ellipsoid(7022, 6378388, 297, 0, "International 1924");
-        //No 7023 in EPSG
+        // No 7023 in EPSG
         /// <summary>
         /// Represents the Krassovsky ellipsoid of 1940.
         /// </summary>
@@ -207,7 +207,7 @@ namespace DotSpatial.Positioning
         /// Represents the Naval Weapons Lab ellipsoid of 1965.
         /// </summary>
         public static readonly Ellipsoid Nwl9D = new Ellipsoid(7025, 6378145, 298.25, 0, "NWL 9D");
-        //No 7026 in EPSG
+        // No 7026 in EPSG
         /// <summary>
         /// Represents the Plessis ellipsoid of 1817.
         /// </summary>
@@ -248,7 +248,7 @@ namespace DotSpatial.Positioning
         /// Represents the Geodetic Reference System ellipsoid of 1967.
         /// </summary>
         public static readonly Ellipsoid Grs67 = new Ellipsoid(7036, 6378160, 298.2471674, 0, "GRS 1967");
-        //No 7037 - 7040 in EPSG
+        // No 7037 - 7040 in EPSG
         /// <summary>
         /// Represents the Average Terrestrial System ellipsoid of 1977.
         /// </summary>
@@ -273,7 +273,7 @@ namespace DotSpatial.Positioning
         /// Represents the Bessel (Japan) ellipsoid of 1841.
         /// </summary>
         public static readonly Ellipsoid Bessel1841Japan = new Ellipsoid(7046, 6377397.155, 299.1528128, 0, "Bessel Namibia (GLM)");
-        //7047 depricated in EPSG
+        // 7047 depricated in EPSG
         /// <summary>
         /// Represents the GRS 1980 Authalic Sphere (r=6371007).
         /// </summary>
@@ -453,7 +453,7 @@ namespace DotSpatial.Positioning
         }
 
         /// <summary>
-        /// Internal contructor for static list generation
+        /// Internal constructor for static list generation
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="equatorialRadius">The equatorial radius.</param>
@@ -474,7 +474,7 @@ namespace DotSpatial.Positioning
         }
 
         /// <summary>
-        /// Internal contructor for static list generation
+        /// Internal constructor for static list generation
         /// </summary>
         /// <param name="epsgNumber">The epsg number.</param>
         /// <param name="a">A.</param>

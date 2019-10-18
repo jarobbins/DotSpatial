@@ -1,13 +1,11 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/7tof6s7m07qdad3b?svg=true)](https://ci.appveyor.com/project/mogikanin/dotspatial)
-
 # What is DotSpatial?
 
-DotSpatial is a geographic information system library written for .NET 4. 
+DotSpatial is a geographic information system library written for .NET Framework.
 It allows developers to incorporate spatial data, analysis and mapping functionality into their applications or to contribute GIS extensions to the community.
 
-DotSpatial provides a map control for .NET and several GIS capabilities including: 
+DotSpatial provides a map control for .NET and several GIS capabilities including:
 
-* Display a map in a .NET Windows Forms or Web application.
+* Display a map in a .NET Windows Forms.
 * Open shapefiles, grids, rasters and images.
 * Render symbology and labels.
 * Reproject on the fly.
@@ -19,7 +17,10 @@ DotSpatial provides a map control for .NET and several GIS capabilities includin
 
 Please use the [discussion list](https://dotspatial.codeplex.com/discussions) to post any discussions related to the development or use of DotSpatial libraries. This is a great place to discuss potential features and to ask questions about how to use the libraries.
 
-For documentation and code samples have a look at the [documentation page](https://dotspatial.codeplex.com/documentation) and the [examples folder](https://github.com/DotSpatial/DotSpatial/tree/master/Source/Examples).
+Documentation and code samples:
+* [documentation page](https://dotspatial.codeplex.com/documentation) 
+* [chm file with API documentation](https://github.com/DotSpatial/DotSpatial/tree/master/Source/Documentation/DotSpatial.chm)
+* [examples folder](https://github.com/DotSpatial/DotSpatial/tree/master/Source/Examples).
 
 Still have questions? Maybe someone already [asked them](https://github.com/DotSpatial/DotSpatial/issues?utf8=✓&q=label%3Aquestion).
 
@@ -27,11 +28,11 @@ Still have questions? Maybe someone already [asked them](https://github.com/DotS
 
 See [Contributing](.github/CONTRIBUTING.md) for information about how to contribute!
 
-### Download
-
-Use this [link](https://ci.appveyor.com/api/projects/mogikanin/dotspatial/artifacts/Source/bin/Release.zip?branch=master) to download latest binaries (from master branch).
-
-Have a look at the [Changelog](https://github.com/DotSpatial/DotSpatial/blob/master/Changelog.md) to see the difference between the master branch and the latest stable release.
+### Links
+* Continious integration build [![Build status](https://ci.appveyor.com/api/projects/status/7tof6s7m07qdad3b/branch/master?svg=true)](https://ci.appveyor.com/project/mogikanin/dotspatial/branch/master)
+* [Changelog](https://github.com/DotSpatial/DotSpatial/blob/master/Changelog.md)
+* [Latest available build from master branch](https://ci.appveyor.com/api/projects/mogikanin/dotspatial/artifacts/Source/bin/Release.zip?branch=master)
+* [Continious Integration builds Nuget feed](https://ci.appveyor.com/nuget/dotspatial)
 
 ### License
 

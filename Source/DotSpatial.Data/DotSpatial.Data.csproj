@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DotSpatial.Data</RootNamespace>
     <AssemblyName>DotSpatial.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>DotSpatial.Data.4.0.snk</AssemblyOriginatorKeyFile>
@@ -33,13 +33,14 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\dotSpatial\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,8 +51,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\bin\Debug\DotSpatial.Data.XML</DocumentationFile>
     <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
@@ -74,6 +74,8 @@
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeAnalysisRuleSet>..\DotSpatial.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -83,6 +85,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\Release\DotSpatial.Data.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\DotSpatial.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotSpatial.GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
@@ -121,17 +125,22 @@
     <Compile Include="FeatureRowChangeEvent.cs" />
     <Compile Include="FeatureSetEventArgs.cs" />
     <Compile Include="FeatureSourceFeatureEditEvent.cs" />
+    <Compile Include="FeatureSourceRowEditEventArgs.cs" />
     <Compile Include="FeatureTable.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FeatureType.cs" />
     <Compile Include="Fields.cs" />
+    <Compile Include="FieldTypeCharacterMapper.cs" />
+    <Compile Include="FieldTypeCharacterMapperManager.cs" />
+    <Compile Include="FieldTypeCharacters.cs" />
     <Compile Include="IContainRasterBounds.cs" />
     <Compile Include="IDisposeLock.cs" />
     <Compile Include="IExtent.cs" />
     <Compile Include="IExtentM.cs" />
     <Compile Include="IExtentZ.cs" />
     <Compile Include="IFeatureRow.cs" />
+    <Compile Include="IFieldTypeCharacterMapper.cs" />
     <Compile Include="IGetBitmap.cs" />
     <Compile Include="Endian.cs" />
     <Compile Include="ImageBandType.cs" />
@@ -143,10 +152,15 @@
     <Compile Include="LineShape.cs" />
     <Compile Include="LineShapefileFeatureSource.cs" />
     <Compile Include="LineShapefileShapeSource.cs" />
+    <Compile Include="MiscUtil\ClassNullOp.cs" />
     <Compile Include="MiscUtil\ExpressionUtil.cs" />
-    <Compile Include="MiscUtil\NullOp.cs" />
+    <Compile Include="MiscUtil\INullOp.cs" />
     <Compile Include="MiscUtil\Operator.cs" />
     <Compile Include="FilePathUtils.cs" />
+    <Compile Include="MiscUtil\Operator{TValue,TResult}.cs" />
+    <Compile Include="MiscUtil\Operator{T}.cs" />
+    <Compile Include="MiscUtil\StructNullOp.cs" />
+    <Compile Include="Mono.cs" />
     <Compile Include="PointShape.cs" />
     <Compile Include="PointShapefileFeatureSource.cs" />
     <Compile Include="PointShapefileShapeSource.cs" />
@@ -165,11 +179,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RasterBoundDataSet.cs" />
-    <Compile Include="RowEditEvent.cs" />
+    <Compile Include="Raster{T}.cs" />
+    <Compile Include="RowEditEventArgs.cs" />
     <Compile Include="ShapeFactory.cs" />
     <Compile Include="ShapefileFeatureSource.cs" />
     <Compile Include="ShapefileFeatureSourceQuadtree.cs" />
+    <Compile Include="ShapefileFeatureSourceSearchAndModifyAttributeParameters.cs" />
     <Compile Include="ShapefileIndexFile.cs" />
+    <Compile Include="ShapefilePackage.cs" />
     <Compile Include="ShapefileShapeSource.cs" />
     <Compile Include="ShapeReader.cs" />
     <Compile Include="ShapeRelateType.cs" />
@@ -210,7 +227,6 @@
     <Compile Include="PngHeader.cs" />
     <Compile Include="PngInsuficientLengthException.cs" />
     <Compile Include="PngInvalidSignatureException.cs" />
-    <Compile Include="PyramidException.cs" />
     <Compile Include="PyramidHeader.cs" />
     <Compile Include="PyramidImage.cs" />
     <Compile Include="PyramidImageHeader.cs" />
@@ -231,13 +247,12 @@
     <Compile Include="HfaInvalidCountException.cs" />
     <Compile Include="HfaPointerInsertNotSupportedException.cs" />
     <Compile Include="HfaType.cs" />
-    <Compile Include="HfaTypeException.cs" />
+    <Compile Include="HfaFieldTypeException.cs" />
     <Compile Include="AffineTransform.cs" />
     <Compile Include="BinaryRasterProvider.cs" />
     <Compile Include="RasterBoundsExt.cs" />
     <Compile Include="RasterExt.cs" />
     <Compile Include="BgdRaster.cs" />
-    <Compile Include="RasterT.cs" />
     <Compile Include="ValueGrid.cs" />
     <Compile Include="BinaryRaster.cs" />
     <Compile Include="IRaster.cs" />
@@ -250,7 +265,6 @@
     <Compile Include="RasterFileType.cs" />
     <Compile Include="RCIndex.cs" />
     <Compile Include="Smoother.cs" />
-    <Compile Include="SpaceTimeSupport.cs" />
     <Compile Include="StreamExt.cs" />
     <Compile Include="ByteBlock.cs" />
     <Compile Include="DataSet.cs" />
@@ -303,7 +317,7 @@
     <Compile Include="CollectiveIndexCompareCancel.cs" />
     <Compile Include="Compare.cs" />
     <Compile Include="CompareCancel.cs" />
-    <Compile Include="Comparison.cs" />
+    <Compile Include="ComparisonArgs.cs" />
     <Compile Include="ComparisonCancelEventArgs.cs" />
     <Compile Include="CopyList.cs" />
     <Compile Include="EventList.cs" />
@@ -345,9 +359,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
     <None Include="app.config" />
     <None Include="DotSpatial.Data.4.0.snk" />
-    <None Include="package.nuspec" />
+    <None Include="DotSpatial.Data.nuspec" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -377,10 +394,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotSpatial.Mono\DotSpatial.Mono.csproj">
-      <Project>{bdc11a53-b435-4b9f-b8fa-06be940acda8}</Project>
-      <Name>DotSpatial.Mono</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DotSpatial.NTSExtension\DotSpatial.NTSExtension.csproj">
       <Project>{034f7ade-ac2a-48ae-9cf2-0686eea97c25}</Project>
       <Name>DotSpatial.NTSExtension</Name>
@@ -393,6 +406,11 @@
       <Project>{9b692e11-0273-4331-9b15-1670093eddbf}</Project>
       <Name>DotSpatial.Serialization</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta001\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

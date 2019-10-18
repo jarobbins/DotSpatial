@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DotSpatial.Plugins.SpatiaLite
 {
-    partial class frmAddLayer
+    partial class FrmAddLayer
     {
         /// <summary>
         /// Required designer variable.
@@ -49,9 +49,17 @@ namespace DotSpatial.Plugins.SpatiaLite
             // 
             // dgGeometryColumns
             // 
+            this.dgGeometryColumns.AllowUserToAddRows = false;
+            this.dgGeometryColumns.AllowUserToDeleteRows = false;
+            this.dgGeometryColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgGeometryColumns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGeometryColumns.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgGeometryColumns.Location = new System.Drawing.Point(12, 63);
             this.dgGeometryColumns.Name = "dgGeometryColumns";
+            this.dgGeometryColumns.ReadOnly = true;
+            this.dgGeometryColumns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgGeometryColumns.Size = new System.Drawing.Size(384, 168);
             this.dgGeometryColumns.TabIndex = 3;
             // 
@@ -64,7 +72,7 @@ namespace DotSpatial.Plugins.SpatiaLite
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOkClick);
             // 
             // label2
             // 
@@ -76,7 +84,7 @@ namespace DotSpatial.Plugins.SpatiaLite
             this.label2.TabIndex = 5;
             this.label2.Text = "Database: e:\\Jiri\\Projects\\World.sqlite";
             // 
-            // frmAddLayer
+            // FrmAddLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,7 +93,7 @@ namespace DotSpatial.Plugins.SpatiaLite
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.dgGeometryColumns);
             this.Controls.Add(this.label1);
-            this.Name = "frmAddLayer";
+            this.Name = "FrmAddLayer";
             this.Text = "Add SpatiaLite Layers";
             ((System.ComponentModel.ISupportInitialize)(this.dgGeometryColumns)).EndInit();
             this.ResumeLayout(false);
