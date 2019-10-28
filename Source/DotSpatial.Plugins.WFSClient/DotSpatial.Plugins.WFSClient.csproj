@@ -142,5 +142,4 @@
   <Target Name="BeforeBuild">
   </Target>
    -->
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

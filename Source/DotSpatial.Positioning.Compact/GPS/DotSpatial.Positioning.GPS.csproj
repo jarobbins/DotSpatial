@@ -14,16 +14,11 @@
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodePlex.snk</AssemblyOriginatorKeyFile>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
+    <SccProjectName></SccProjectName>
+    <SccLocalPath></SccLocalPath>
+    <SccAuxPath></SccAuxPath>
+    <SccProvider></SccProvider>
+    <FileUpgradeFlags></FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -153,8 +148,7 @@
     <Compile Include="BinaryPacket.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices.cs" />
-    <Compile Include="Devices\SerialDevice.cs">
-    </Compile>
+    <Compile Include="Devices\SerialDevice.cs"></Compile>
     <Compile Include="Nmea\GpggaSentence.cs" />
     <Compile Include="Nmea\GpggkSentence.cs" />
     <Compile Include="Nmea\GpgllSentence.cs" />
