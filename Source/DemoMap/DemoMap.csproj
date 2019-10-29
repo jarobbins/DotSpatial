@@ -168,4 +168,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup xmlns="">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
+  </ItemGroup>
 </Project>
