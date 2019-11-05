@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <GenerateAssemblyCompanyAttribute>False</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyConfigurationAttribute>False</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyProductAttribute>False</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>False</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 </Project>
