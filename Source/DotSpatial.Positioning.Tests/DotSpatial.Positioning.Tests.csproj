@@ -12,4 +12,7 @@
     <PackageReference Include="NUnit" Version="2.6.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Positioning\DotSpatial.Positioning.csproj" />
+  </ItemGroup>
 </Project>

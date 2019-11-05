@@ -12,4 +12,9 @@
     <PackageReference Include="GeoDigital.GeoAPI" Version="2.0.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Analysis\DotSpatial.Analysis.csproj" />
+    <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj" />
+    <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+  </ItemGroup>
 </Project>

@@ -11,4 +11,7 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="2.6.3" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+  </ItemGroup>
 </Project>

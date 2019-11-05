@@ -11,4 +11,12 @@
   <ItemGroup>
     <PackageReference Include="GeoDigital.GeoAPI" Version="2.0.3" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotSpatial.Controls\DotSpatial.Controls.csproj" />
+    <ProjectReference Include="..\..\DotSpatial.Data.Forms\DotSpatial.Data.Forms.csproj" />
+    <ProjectReference Include="..\..\DotSpatial.Data\DotSpatial.Data.csproj" />
+    <ProjectReference Include="..\..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+    <ProjectReference Include="..\..\DotSpatial.Symbology\DotSpatial.Symbology.csproj" />
+    <ProjectReference Include="..\..\DotSpatial.WebControls\DotSpatial.WebControls.csproj" />
+  </ItemGroup>
 </Project>

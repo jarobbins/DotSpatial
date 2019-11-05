@@ -11,4 +11,9 @@
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Controls\DotSpatial.Controls.csproj" />
+    <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj" />
+    <ProjectReference Include="..\DotSpatial.Extensions\DotSpatial.Extensions.csproj" />
+  </ItemGroup>
 </Project>

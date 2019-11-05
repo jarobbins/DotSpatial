@@ -16,5 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+    <ProjectReference Include="..\DotSpatial.NTSExtension\DotSpatial.NTSExtension.csproj" />
+    <ProjectReference Include="..\DotSpatial.Serialization\DotSpatial.Serialization.csproj" />
   </ItemGroup>
 </Project>

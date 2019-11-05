@@ -14,4 +14,12 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.105.2" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Controls\DotSpatial.Controls.csproj" />
+    <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj" />
+    <ProjectReference Include="..\DotSpatial.Extensions\DotSpatial.Extensions.csproj" />
+    <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+    <ProjectReference Include="..\DotSpatial.Serialization\DotSpatial.Serialization.csproj" />
+    <ProjectReference Include="..\DotSpatial.Symbology\DotSpatial.Symbology.csproj" />
+  </ItemGroup>
 </Project>

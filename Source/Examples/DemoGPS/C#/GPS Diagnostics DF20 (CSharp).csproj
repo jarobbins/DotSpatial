@@ -13,4 +13,8 @@
     <PackageReference Include="DotSpatial.Positioning.Design" Version="2.0.0-rc1" />
     <PackageReference Include="DotSpatial.Positioning.Forms" Version="2.0.0-rc1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\GeoFramework\2.0.0 Open Source\GeoFramework %28Desktop Framework 2.0%29.csproj" />
+    <ProjectReference Include="..\..\..\GPS.NET %28Desktop Framework 2.0%29.csproj" />
+  </ItemGroup>
 </Project>

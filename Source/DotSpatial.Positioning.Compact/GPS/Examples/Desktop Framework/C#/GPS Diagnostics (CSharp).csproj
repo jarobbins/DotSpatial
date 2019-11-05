@@ -8,4 +8,8 @@
     <GenerateAssemblyTitleAttribute>False</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\GeoSpatial\DotSpatial.Positioning.csproj" />
+    <ProjectReference Include="..\..\..\DotSpatial.Positioning.GPS.csproj" />
+  </ItemGroup>
 </Project>

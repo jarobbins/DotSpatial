@@ -8,4 +8,8 @@
     <GenerateAssemblyTitleAttribute>False</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\GeoFramework\2.0.0 Open Source\GeoFramework %28Desktop Framework 3.5%29.csproj" />
+    <ProjectReference Include="..\..\..\GPS.NET %28Desktop Framework 3.5%29.csproj" />
+  </ItemGroup>
 </Project>

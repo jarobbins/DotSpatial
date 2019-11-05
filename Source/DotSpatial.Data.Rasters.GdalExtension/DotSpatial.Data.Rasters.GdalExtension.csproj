@@ -16,4 +16,11 @@
     <PackageReference Include="GDAL.Plugins" Version="1.11.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotSpatial.Controls\DotSpatial.Controls.csproj" />
+    <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj" />
+    <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
+    <ProjectReference Include="..\DotSpatial.Serialization\DotSpatial.Serialization.csproj" />
+    <ProjectReference Include="..\DotSpatial.Symbology\DotSpatial.Symbology.csproj" />
+  </ItemGroup>
 </Project>
