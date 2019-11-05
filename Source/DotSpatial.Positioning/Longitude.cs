@@ -643,7 +643,7 @@ namespace DotSpatial.Positioning
 #else
                 return Math.Round(
                     (Math.Abs(
-                        _DecimalDegrees - Truncate(_DecimalDegrees)) * 60.0), MaximumPrecisionDigits - 2);
+                        DecimalDegrees - Truncate(DecimalDegrees)) * 60.0), MAXIMUM_PRECISION_DIGITS - 2);
 #endif
             }
         }
@@ -682,7 +682,7 @@ namespace DotSpatial.Positioning
 #if Framework20 && !PocketPC
                 return (int)Math.Truncate(_decimalDegrees);
 #else
-                return Truncate(_DecimalDegrees);
+                return Truncate(DecimalDegrees);
 #endif
             }
         }
@@ -792,7 +792,7 @@ Math.Round(
 #if Framework20 && !PocketPC
                 double longitudeTemp = (DecimalDegrees + 180) - (int)Math.Truncate((DecimalDegrees + 180) / 360) * 360 - 180;
 #else
-            double LongitudeTemp = (DecimalDegrees + 180) - Angle.Truncate((DecimalDegrees + 180) / 360) * 360 - 180;
+                double longitudeTemp = (DecimalDegrees + 180) - Angle.Truncate((DecimalDegrees + 180) / 360) * 360 - 180;
 #endif
 
                 // int ZoneNumber = 0;
@@ -828,7 +828,7 @@ Math.Round(
 #if Framework20 && !PocketPC
                     return (int)Math.Truncate((longitudeTemp + 180) / 6) + 1;
 #else
-                    return Angle.Truncate((LongitudeTemp + 180) / 6) + 1;
+                    return Angle.Truncate((longitudeTemp + 180) / 6) + 1;
 #endif
                 }
 

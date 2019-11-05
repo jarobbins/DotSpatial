@@ -173,7 +173,8 @@ namespace DotSpatial.Positioning
         {
             get
             {
-                return DOT_NET_FRAMEWORK_ID;
+                //return DOT_NET_FRAMEWORK_ID;
+                return DotNetFrameworkID.Unknown;
             }
         }
     }

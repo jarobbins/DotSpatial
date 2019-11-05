@@ -2,6 +2,7 @@
 using System;
 using System.Reflection;
 using System.Resources;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security;
 #if !PocketPC && Framework20
@@ -64,37 +65,11 @@ using System.Runtime.ConstrainedExecution;
 #endif
 #endif
 
-#if !PocketPC
-
-// On the desktop .NET Framework, we can certify that this code has been debugged well
-// enough to be reliable in all production environments.  Some crazy manufacturers will
-// throw curve balls at this certification, sure, but we can at least certify this is
-// our best, exhaustive effort.
-[assembly: ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
-
-#endif
-
 /* There are security and performance benefits of explicitly declaring permissions required
  * by this assembly.  They are requested now and asserted explicitly to remove the need for
  * time-consuming or redundant security checks.
  */
 #if !PocketPC || DesignTime
-
-// CAS permission declarations are obsolete in .Net 4.0
-#if !Framework40
-
-    // Grant only the minimum security permissions
-    [assembly: SecurityPermission(SecurityAction.RequestMinimum)]
-    // Grant only the minimum required reflection permissions
-    [assembly: ReflectionPermission(SecurityAction.RequestMinimum)]
-    // We won't use the registry, so deny access
-    [assembly: RegistryPermission(SecurityAction.RequestRefuse)]
-    // We won't use file I/O, so we dfon't need it
-    [assembly: FileIOPermission(SecurityAction.RequestRefuse)]
-    // We want only the minimum permissions necessary
-    [assembly: PermissionSet(SecurityAction.RequestMinimum, Unrestricted = false)]
-
-#endif
 
 // Allow partially-trusted callers to use this code (such as ASP.NET)
 [assembly: AllowPartiallyTrustedCallers]

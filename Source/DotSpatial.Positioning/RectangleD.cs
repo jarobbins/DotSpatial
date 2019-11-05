@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using DotSpatial.Positioning;
 #if !PocketPC || DesignTime
 using System.ComponentModel;
 #endif
@@ -96,7 +97,7 @@ namespace GeoFramework
             }
             else
             {
-                throw new FormatException(Properties.Resources.RectangleD_InvalidFormat);
+                throw new FormatException(DotSpatial.Positioning.Properties.Resources.RectangleD_InvalidFormat);
             }
 		}
 
