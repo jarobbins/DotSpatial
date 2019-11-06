@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using GeoFramework.Gps.IO;
+using DotSpatial.Positioning;
 
 namespace GeoFramework.Gps
 {

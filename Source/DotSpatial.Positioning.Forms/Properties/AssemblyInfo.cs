@@ -3,6 +3,7 @@ using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 #if !PocketPC && Framework20
 
 using System.Runtime.ConstrainedExecution;
