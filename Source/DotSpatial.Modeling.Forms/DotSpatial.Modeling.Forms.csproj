@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+	<TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyCompanyAttribute>False</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyConfigurationAttribute>False</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyProductAttribute>False</GenerateAssemblyProductAttribute>
@@ -21,8 +22,5 @@
     <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj" />
     <ProjectReference Include="..\DotSpatial.Symbology.Forms\DotSpatial.Symbology.Forms.csproj" />
     <ProjectReference Include="..\DotSpatial.Symbology\DotSpatial.Symbology.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 </Project>
