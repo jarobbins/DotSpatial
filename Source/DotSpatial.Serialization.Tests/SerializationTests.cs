@@ -51,7 +51,7 @@ namespace DotSpatial.Serialization.Tests
         /// <summary>
         /// Deletes the temporary files.
         /// </summary>
-        [TestFixtureTearDown]
+        [OneTimeTearDownAttribute]
         public void Clear()
         {
             foreach (var tempFile in _filesToRemove)

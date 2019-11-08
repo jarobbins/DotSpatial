@@ -559,7 +559,7 @@ namespace DotSpatial.Data.Rasters.GdalExtension
         {
             try
             {
-                SpatialReference osrSpatialref = layer.GetSpatialRef();
+                OSGeo.OSR.SpatialReference osrSpatialref = layer.GetSpatialRef();
                 if (osrSpatialref != null)
                 {
                     string sProj4String;
@@ -689,13 +689,15 @@ namespace DotSpatial.Data.Rasters.GdalExtension
 
                         int h;
                         int m;
-                        int s;
+                        float s;
                         int flag;
 
                         feature.GetFieldAsDateTime(i, out year, out month, out day, out h, out m, out s, out flag);
                         try
                         {
-                            return new DateTime(year, month, day, h, m, s);
+                            var wholeSeconds = (int)Math.Floor(s);
+                            var ms = (int)Math.Floor((s - wholeSeconds) * 1000);
+                            return new DateTime(year, month, day, h, m, wholeSeconds, ms);
                         }
                         catch (ArgumentOutOfRangeException)
                         {

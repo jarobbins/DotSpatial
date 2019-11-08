@@ -10,12 +10,9 @@
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Gdal.Core" Version="1.0.0" />
     <PackageReference Include="GeoDigital.GeoAPI" Version="2.0.3" />
     <PackageReference Include="GeoDigital.DotSpatial.NetTopologySuite" Version="2.0.3" />
-    <PackageReference Include="GDAL" Version="1.11.1" />
-    <PackageReference Include="GDAL.Native" Version="1.11.1" />
-    <PackageReference Include="GDAL.Plugins" Version="1.11.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotSpatial.Controls\DotSpatial.Controls.csproj" />
