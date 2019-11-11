@@ -8,7 +8,7 @@ namespace DotSpatial.Tools.Tests
     /// <summary>
     /// A mock progress handler.
     /// </summary>
-    internal class MockProgressHandler : ICancelProgressHandler
+    public class MockProgressHandler : ICancelProgressHandler
     {
         /// <summary>
         /// Gets a value indicating whether the progress was canceled.

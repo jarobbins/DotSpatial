@@ -18,7 +18,6 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotSpatial.Data.Rasters.GdalExtension\DotSpatial.Data.Rasters.GdalExtension.csproj" />
     <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj" />
     <ProjectReference Include="..\DotSpatial.Extensions\DotSpatial.Extensions.csproj" />
     <ProjectReference Include="..\DotSpatial.Modeling.Forms\DotSpatial.Modeling.Forms.csproj" />

@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotSpatial.Tests.Common\DotSpatial.Tests.Common.csproj" />
+    <ProjectReference Include="..\DotSpatial.Tools.Tests\DotSpatial.Tools.Tests.csproj" />
+    <ProjectReference Include="..\DotSpatial.Tools\DotSpatial.Tools.csproj" />
   </ItemGroup>
 
 </Project>
