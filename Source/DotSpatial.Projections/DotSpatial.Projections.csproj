@@ -7,5 +7,9 @@
     <GenerateAssemblyProductAttribute>False</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>False</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>DotSpatial.Projections.4.0.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
   </PropertyGroup>
 </Project>
