@@ -5,7 +5,7 @@ namespace DotSpatial.Projections.Tests
     [SetUpFixture]
     public class AssemblyInit
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void RunBeforeAnyTests()
         {
             GridShift.InitializeExternalGrids("GeogTransformGrids", false);

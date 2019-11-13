@@ -12,4 +12,12 @@
     <DelaySign>false</DelaySign>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
   </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XML\datums.xml.ds">
+      <LogicalName>DotSpatial.Projections.XML.datums.xml.ds</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuthorityCodes\epsg.ds">
+      <LogicalName>DotSpatial.Projections.AuthorityCodes.epsg.ds</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
